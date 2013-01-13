@@ -157,7 +157,8 @@ create table lyk_review
 create table lyk_tag
 (
    t_id                 int not null auto_increment,
-   t_name               varchar(20) not null
+   t_name               varchar(20) not null,
+   primary key (t_id)
 );
 
 /*==============================================================*/

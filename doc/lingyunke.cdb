@@ -1326,8 +1326,9 @@ EntityComment 0 新宋体,8,N</a:FontList>
 <a:Code>lyk_index_menu</a:Code>
 <a:CreationDate>1358066367</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1358066633</a:ModificationDate>
+<a:ModificationDate>1358071102</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
+<a:Comment>菜单表</a:Comment>
 <c:Identifiers>
 <o:Identifier Id="o27">
 <a:ObjectID>B711B548-680B-4046-BD87-A40C84CEC2E9</a:ObjectID>
