@@ -84,6 +84,9 @@
 				top:36px;
 				position:absolute;
 				display:none;
+				-webkit-transform-origin: 65% 50%;
+				-webkit-perspective: 500;
+				-webkit-transform-style: preserve-3d;
 			}
 			.subMenu ul li{
 				display: list-item;
@@ -97,8 +100,8 @@
 			}
 			@-webkit-keyframes turnSubMenu{
                 0%{-webkit-transform: rotateY(0deg);}
-                50%{-webkit-transform: rotateY(0deg);}
-                100%{-webkit-transform: rotateY(0deg);}
+                50%{-webkit-transform: rotateY(180deg);}
+                100%{-webkit-transform: rotateY(360deg);}
 			}
 			.subMenu ul li:hover{
 				box-shadow:3px -3px 7px #000;
