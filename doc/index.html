@@ -15,13 +15,14 @@
 				font-family:"楷体";
 				width:100%;
 				height:50px;
-				padding:5px 30px;
+				padding:5px;
 				z-index:999;
 				position:fixed;
 				top:0px;
 				left:-5px;
 				text-shadow:-3px 3px 6px #2BBA19;
 				box-shadow:0 8px 10px #333;
+				-webkit-transition: top 1s ease-in-out 4s;
 			}
 			.logo{
 				line-height:50px;
@@ -30,6 +31,11 @@
 				font-size:40px;
 				font-weight:bold;
 				position:relative;
+				background-color:#333;
+				height:55px;
+				padding-left: 25px;
+				z-index:1002;
+				box-shadow:5px 0 10px #333;
 				-webkit-perspective: 500;
 				-webkit-transform-style: preserve-3d;
 				-webkit-transition: perspective 5s;
@@ -53,7 +59,7 @@
 				position:relative;
 				padding-left:170px;
 				bottom:10px;
-				min-width:500px;
+				min-width:500px;				
 			}
 			.nav li{
 				display: list-item;
@@ -77,16 +83,63 @@
 				width:100%;
 				height:900px;
 			}
+			#menu{
+				-webkit-perspective: 500;
+				height:40px;
+				-webkit-transform-style: preserve-3d;
+				-webkit-transition: height 1s linear;
+				transform-style: preserve-3d;
+				transition: height 1s linear;
+				-o-transform-style: preserve-3d;
+				-o-transition: height 1s linear;
+			}
 			.subMenu ul{
 				font-size:20px;
 				min-width:100px;
-				list-style:none;				
-				top:36px;
+				list-style:none;
+				top:10px;
 				position:absolute;
 				display:none;
 				-webkit-transform-origin: 65% 50%;
-				-webkit-perspective: 500;
-				-webkit-transform-style: preserve-3d;
+			}
+			@-webkit-keyframes turnSubMenu{
+                0%{-webkit-transform: rotateY(0deg);}
+                100%{-webkit-transform: rotateY(360deg);}
+			}
+			@-webkit-keyframes shrinkMenu{
+                0%{left:-35px;-webkit-transform: rotate(-720deg);}
+                25%{left:150px;-webkit-transform: rotate(0deg);}
+                100%{left:150px;-webkit-transform: rotate(1080deg);}
+			}
+			@-webkit-keyframes shrinkMenuBack{
+                0%{left:150px;-webkit-transform: rotate(1080deg);}
+                75%{left:150px;-webkit-transform: rotate(0deg);}
+                100%{left:-35px;-webkit-transform: rotate(-720deg);}
+			}
+			@-webkit-keyframes moveWheel{
+                0%{top:15px;left:150px;-webkit-transform: rotate(0deg);}
+                50%{top:115px;left:150px;-webkit-transform: rotate(360deg);}
+                100%{top:115px;left:5px;-webkit-transform: rotate(720deg);}
+			}
+			@-webkit-keyframes hideMenu{
+                0%{left:0;}
+                100%{left:-670px;}
+			}
+			@-webkit-keyframes hideMenu2{
+                0%{left:-130px;}
+                100%{left:-670px;}
+			}
+			@-webkit-keyframes showMenu{
+                0%{left:-670px;}
+                100%{left:-130px;}
+			}
+			@-webkit-keyframes wheelWhenHideMenu2{
+                0%{-webkit-transform: rotate(0deg);}
+                100%{-webkit-transform: rotate(360deg);}
+			}
+			@-webkit-keyframes wheelWhenShowMenu{
+                0%{-webkit-transform: rotate(360deg);}
+                100%{-webkit-transform: rotate(0deg);}
 			}
 			.subMenu ul li{
 				display: list-item;
@@ -98,22 +151,45 @@
 				box-shadow: 3px 6px 8px #000;
 				border-radius: 5px;
 			}
-			@-webkit-keyframes turnSubMenu{
-                0%{-webkit-transform: rotateY(0deg);}
-                50%{-webkit-transform: rotateY(180deg);}
-                100%{-webkit-transform: rotateY(360deg);}
-			}
 			.subMenu ul li:hover{
 				box-shadow:3px -3px 7px #000;
 			}
 			.subMenu ul li a:visited{color:#2BBA19;}
 			.subMenu ul li a:link{color:#2BBA19;}
 			.subMenu ul li a:hover{color:#DAD9D7;}
+			.otherHeaderBtn{
+				position:absolute;
+				top:0;
+				right:1%;
+				width:auto;
+				height:auto;
+				width:400px;
+				height:60px;
+			}
+			#fullScreen{
+				background: url(full_screen_small.gif) no-repeat;
+				position:absolute;
+				width:20px;
+				height:20px;
+				cursor:pointer;
+				top:5px;
+				right:0;
+			}
+			#movingMenu{
+				background: url(movingMenu.gif) no-repeat;
+				position:fixed;
+				top:15px;
+				left:-35px;
+				width:35px;
+				height:35px;
+				z-index:1001;
+				cursor:pointer;
+			}
 		</style>
 	</head>
 	
 	<body>
-		<div class='header'>
+		<div class='header' id='header'>
 			<div class='logo'>凌云客</div>
 			<div id='menu'>
 				<ul class='nav'>
@@ -161,9 +237,11 @@
 					</ul>		
 				</span>
 			</div>
-			<div>		
+			<div class='otherHeaderBtn'>
+				<span id='fullScreen'></span>
 			</div>
 		</div>
+		<div id='movingMenu'></div>
 		<div class='content'>
 			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
 			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
@@ -178,39 +256,185 @@
 			function $(id){
 				return document.getElementById(id);
 			}
+			function log(txt){
+				console.log(txt);
+			}
 			(function(){
 				var menu = $('menu'),
+					header = $('header'),
+					fullScreen = $('fullScreen'),
+					movingMenu = $('movingMenu'),
 					uls = menu.getElementsByTagName('ul') || [],
 					ulsDic = [],
 					lis = uls[0].getElementsByTagName('li') || [],
 					lenUl = uls.length,
 					lenLi = lis.length,
-					baseLeft = 160;
-				for(var i = 1; i < lenUl; i ++){
-					var ul = uls[i], li = lis[i-2] || {clientWidth:0};
-					ulsDic[ul.className] = ul;
-					baseLeft += +li.clientWidth;
-					ul.style.left = baseLeft + 'px';
-				}
-				uls = null; //释放
-				for(var i = 0; i < lenLi; i ++){
-					var li = lis[i];
-					li.index = i+1;
-					li.onmouseover = function(e){
-						//e.stopPropagation();
-						if(this.isover) return;
-						this.isover = true;
-						var ul = ulsDic['subMenu'+this.index];
-						ul.style.display = 'block';
-						ul.style['webkitAnimation'] = 'turnSubMenu 1s linear';
+					baseLeft = 130,
+					killSubMenu = true,
+					allowSubMenu = true;//这个变量用在，当菜单在播放动画时，不允许子菜单弹出
+				function init(){
+					bindMenuEvent();
+					fullScreen.onclick = function(e){
+						$.allowSubMenu = false;
+						if(!this.isFull){
+							header.style.top = '-70px';
+							movingMenu.style['WebkitAnimation'] = 'shrinkMenu 4s linear, moveWheel 2s linear 4s';
+							$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 1s';
+							//movingMenu.style.left = '150px';
+							setTimeout(function(){
+								$.mainMenu.style.left = '-670px';
+							},4000);
+							setTimeout(function(){
+								movingMenu.style.left = '5px';
+								movingMenu.style.top = '115px';
+								$.mainMenu.style.top = '160px';
+								moveSubMenuBelow();
+								$.allowSubMenu = true;
+								fullScreen.style.top = '75px';
+								fullScreen.style.background = 'url(recovery_screen_small.gif) no-repeat';
+							},6000);
+							this.isFull = true;
+						}
+						else{
+							header.style.top = '0';
+							movingMenu.style['WebkitAnimation'] = 'moveWheel 2s linear 2 -2.3s alternate, shrinkMenuBack 4s linear 2s';
+							setTimeout(function(){
+								$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 2 -3s alternate';
+							}, 2000);
+							$.mainMenu.style.top = '-10px';
+							$.mainMenu.style.left = '0';
+							movingMenu.style.top = '15px';
+							movingMenu.style.left = '-35px';
+							fullScreen.style.top = '5px';
+							fullScreen.style.background = 'url(full_screen_small.gif) no-repeat';
+							//在这里回放动画
+							this.isFull = false;
+							$.allowSubMenu = true;
+							moveSubMenuBack();
+						}
+						checkAndKillPreSubmenu();
 					}
-					li.onmouseout = function(e){
-						e.stopPropagation();
-						this.isover = false;
-						ulsDic['subMenu'+this.index].style.display = 'none';
+					movingMenu.onclick = function(){
+						$.allowSubMenu = false;
+						if(!this.isMenuVisible){
+							$.mainMenu.style['WebkitAnimation'] = 'showMenu 1s linear';
+							this.style['WebkitAnimation'] = 'wheelWhenShowMenu 1s linear';
+							$.mainMenu.style.left = '-130px';
+							this.isMenuVisible = true;
+						}
+						else {
+							$.mainMenu.style['WebkitAnimation'] = 'hideMenu2 1s linear';
+							this.style['WebkitAnimation'] = 'wheelWhenHideMenu2 1s linear';
+							$.mainMenu.style.left = '-670px';
+							this.isMenuVisible = false;					
+						}
+						setTimeout(function(){
+							$.allowSubMenu = true;
+						},1000);
+						checkAndKillPreSubmenu();
 					}
 				}
-			})();
+				function moveSubMenuBelow(){
+					baseLeft = 0;
+					for(var i = 1; i < lenUl; i ++){
+						var ul = uls[i], li = lis[i-2] || {clientWidth:0};
+						baseLeft += +li.clientWidth;
+						ul.style.left = baseLeft + 'px';
+						ul.style.top = '180px';
+					}					
+				}
+				function moveSubMenuBack(){
+					baseLeft = 130;
+					for(var i = 1; i < lenUl; i ++){
+						var ul = uls[i], li = lis[i-2] || {clientWidth:0};
+						baseLeft += +li.clientWidth;
+						ul.style.left = baseLeft + 'px';
+						ul.style.top = '10px';
+					}					
+				}
+				
+				function checkAndKillPreSubmenu(){
+					if($.droppedSubMenu){
+						$.droppedSubMenu.style.display = 'none';
+						//ul.style.height = '0';
+						$.activeMenuItem.isover = false;
+						clearTimeout($.activeMenuItem.killTimeout);
+						$.activeMenuItem.killTimeout = null;
+						if($.droppedSubMenu.killTimer) {
+							clearTimeout($.droppedSubMenu.killTimer);
+							$.droppedSubMenu.killTimer = null;
+							//log('clearTimeout');
+						}
+					}
+				}
+				function bindMenuEvent(){
+					for(var i = 1; i < lenUl; i ++){
+						var ul = uls[i], li = lis[i-2] || {clientWidth:0};
+						ulsDic[ul.className] = ul;
+						baseLeft += +li.clientWidth;
+						ul.style.left = baseLeft + 'px';
+						ul.index = i;
+						ul.onmousemove = function(e){
+							//this.style.display = 'none';
+							if(!$.killSubMenu) return;
+							$.killSubMenu = false;
+							setTimeout(function(){
+								$.killSubMenu = true;
+							}, 500);
+							var that = this;
+							if(this.killTimer){
+								clearTimeout(this.killTimer);
+								this.killTimer = null;
+							}
+							this.killTimer = setTimeout(function(){
+								that.style.display = 'none';
+								//ul.style.height = '0';
+								//that.isover = false;
+								that.killTimer = null;
+							},3000);
+						}
+					}
+					$.mainMenu = uls[0];
+					//uls = null; //释放
+					//设置子菜单弹出效果
+					for(var i = 0; i < lenLi; i ++){
+						var li = lis[i];
+						li.index = i+1;
+						li.onmouseover = function(e){
+							if(!$.allowSubMenu) return ;
+							e.stopPropagation();
+							if(this.isover) return;
+							this.isover = true;
+							var ul = ulsDic['subMenu'+this.index], that = this;
+							checkAndKillPreSubmenu();
+							ul.style.display = 'block';
+							//ul.style.height = '200px';
+							$.droppedSubMenu = ul;
+							$.activeMenuItem = this;
+							ul.style['WebkitAnimation'] = 'turnSubMenu 1s linear .5s';
+							//ul.style['MozAnimation'] = 'turnSubMenu 1s linear';
+							if(!this.killTimeout){
+								this.killTimeout = setTimeout(function(){
+									if(!ul.killTimer){
+										ul.style.display = 'none';
+										//ul.style.height = '0';
+									}
+									that.isover = false;
+								}, 3000);
+								//log('over');
+							}
+						}
+					}
+				}
+				this.uls = uls;
+				this.init = init;
+				this.droppedSubMenu = null;
+				this.activeMenuItem = null;
+				this.mainMenu = null;
+				this.killSubMenu = killSubMenu;
+				this.allowSubMenu = allowSubMenu;
+			}).apply($);
+			$.init();
 		</script>
 	</body>
 </html>
