@@ -5,7 +5,11 @@
 		<link rel="shortcut icon" href="favicon.png">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf8">
 		<style>
-			body{margin:0;}
+			body{
+				margin:0;
+				overflow-x:hidden;
+				background-color:#DAD9D7;
+			}
 			a:hover{text-decoration:none;}
 			a:active{color:#DAD9D0;}
 			a:link{text-decoration:none;}
@@ -53,6 +57,8 @@
 				perspective: 5000;
 				transform: rotateY(180deg);
 			}
+			.logo a:visited{color:#2BBA19;}
+			.logo a:link{color:#2BBA19;}
 			.nav{
 				font-size:20px;
 				list-style:none;
@@ -78,11 +84,6 @@
 			.nav li a:visited{color:#2BBA19;}
 			.nav li a:link{color:#2BBA19;}
 			.nav li a:hover{color:#DAD9D7;}
-			.content{
-				background-color:#DAD9D7;
-				width:100%;
-				height:900px;
-			}
 			#menu{
 				-webkit-perspective: 500;
 				height:40px;
@@ -185,12 +186,107 @@
 				z-index:1001;
 				cursor:pointer;
 			}
+			#index {
+				-webkit-transition: left 1s linear, padding-top 1s 4s, opacity 2s linear;	
+				transition: left 1s linear, padding-top 1s 4s, opacity 2s linear;
+				display:inline;
+				float:left;
+				width:100%;
+				height:auto;
+				background-color:#DAD9D7;
+				z-index: 101;
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding-top: 60px;
+				opacity: 1;
+				margin: 20px;
+			}
+			.main{
+				width: 100%;
+				height: 100%;
+				left: -20px;
+				position: absolute;
+			}
+			#content{
+				-webkit-transition: left 1s ease-in-out, padding-top 1s 4s, opacity 2s linear;	
+				transition: left 1s ease-in-out, padding-top 1s 4s, opacity 2s linear;
+				display:inline;
+				float:left;
+				width:100%;
+				height:auto;
+				background-color:#DAD9D7;
+				z-index: 100;
+				position: absolute;
+				top: 0;
+				padding-top: 60px;
+				opacity: 0;
+				margin: 20px;
+				margin-left: 40px;
+			}
+			#content2{
+				-webkit-transition: left 1s ease-in-out, padding-top 1s 4s, opacity 2s linear;	
+				transition: left 1s ease-in-out, padding-top 1s 4s, opacity 2s linear;	
+				display:inline;
+				float:left;
+				width:100%;
+				height:auto;
+				background-color:#DAD9D7;
+				z-index: 99;
+				top: 0;
+				padding-top: 60px;
+				position: absolute;
+				opacity: 0;
+				margin: 20px;
+				margin-left: 40px;
+			}
+			#index{
+				width: 100%;
+				position: absolute;
+				top: 0;
+				padding-top: 60px;
+				margin: 20px;
+			}
+			.wrapper{
+				width: 85%;
+				min-width: 1000px;
+				z-index: 1;
+				margin: 0 auto;
+			}
+			.txtView{
+				float: left;
+				width: 72%;
+				position: relative;
+				height: auto;
+				border-left: 1px solid #B2B1B0;
+			}
+			.sideView{
+				float: right;
+				position: relative;
+				width: 26%;
+				height: auto;
+				overflow: hidden;
+				padding-left: 15px;
+				border-left: 1px solid #B2B1B0;
+			}
+			.article_list{
+				display: block;
+				margin: 20px;
+				font-family: '楷体';
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 25px;
+			}
+			.article_list p{
+				margin: 5px 0;
+				text-indent: 40px;
+			}
 		</style>
 	</head>
 	
 	<body>
 		<div class='header' id='header'>
-			<div class='logo'>凌云客</div>
+			<div class='logo'><a href='#'>凌云客</a></div>
 			<div id='menu'>
 				<ul class='nav'>
 					<li><a href='#'>编程语言</a></li>
@@ -242,15 +338,77 @@
 			</div>
 		</div>
 		<div id='movingMenu'></div>
-		<div class='content'>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
-			fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+		<div class='main'>
+			<div id='index'>
+				<div class='wrapper min_fixed'>
+					<div class='txtView'>
+						<span class='article_list'>
+				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
+				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
+				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
+				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
+				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
+				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
+				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
+				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
+				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
+				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
+				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
+				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
+				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p>
+						</span>
+					</div>
+					<div class='sideView'><p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
+				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
+				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
+				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
+				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
+				是一款非常不错这方便的处理工具。</p></div>
+				</div>
+			</div>
+			<div id='content'>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf111<br/>
+			</div>
+			<div id='content2'>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf<br/>
+				fasd;fkajfasdffasd;fkajfasdffasd;fkajfasdffasd;fkajfasdf222<br/>
+			</div>
 		</div>
 		<script type='text/javascript'>
 			function $(id){
@@ -264,6 +422,11 @@
 					header = $('header'),
 					fullScreen = $('fullScreen'),
 					movingMenu = $('movingMenu'),
+					content = $('content'),
+					content2 = $('content2'),
+					indexPage = $('index'),
+					curContent = indexPage,
+					nextContent = content,
 					uls = menu.getElementsByTagName('ul') || [],
 					ulsDic = [],
 					lis = uls[0].getElementsByTagName('li') || [],
@@ -271,9 +434,12 @@
 					lenLi = lis.length,
 					baseLeft = 130,
 					killSubMenu = true,
+					clientWidth = document.body.clientWidth,
 					allowSubMenu = true;//这个变量用在，当菜单在播放动画时，不允许子菜单弹出
 				function init(){
 					bindMenuEvent();
+					content.style.left = -clientWidth + 'px';
+					content2.style.left = -clientWidth + 'px';
 					fullScreen.onclick = function(e){
 						$.allowSubMenu = false;
 						if(!this.isFull){
@@ -293,14 +459,16 @@
 								fullScreen.style.top = '75px';
 								fullScreen.style.background = 'url(recovery_screen_small.gif) no-repeat';
 							},6000);
+							content.style.paddingTop = '0';
+							content2.style.paddingTop = '0';
 							this.isFull = true;
 						}
 						else{
 							header.style.top = '0';
-							movingMenu.style['WebkitAnimation'] = 'moveWheel 2s linear 2 -2.3s alternate, shrinkMenuBack 4s linear 2s';
+							movingMenu.style['WebkitAnimation'] = 'moveWheel 2s linear 2 -2s alternate, shrinkMenuBack 5s linear 2s';
 							setTimeout(function(){
 								$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 2 -3s alternate';
-							}, 2000);
+							}, 3000);
 							$.mainMenu.style.top = '-10px';
 							$.mainMenu.style.left = '0';
 							movingMenu.style.top = '15px';
@@ -311,8 +479,11 @@
 							this.isFull = false;
 							$.allowSubMenu = true;
 							moveSubMenuBack();
+							content.style.paddingTop = '60px';
+							content2.style.paddingTop = '60px';
 						}
 						checkAndKillPreSubmenu();
+						$.switchContent();
 					}
 					movingMenu.onclick = function(){
 						$.allowSubMenu = false;
@@ -332,6 +503,7 @@
 							$.allowSubMenu = true;
 						},1000);
 						checkAndKillPreSubmenu();
+						switchContent(true);
 					}
 				}
 				function moveSubMenuBelow(){
@@ -411,7 +583,7 @@
 							//ul.style.height = '200px';
 							$.droppedSubMenu = ul;
 							$.activeMenuItem = this;
-							ul.style['WebkitAnimation'] = 'turnSubMenu 1s linear .5s';
+							ul.style['WebkitAnimation'] = 'turnSubMenu .6s linear';
 							//ul.style['MozAnimation'] = 'turnSubMenu 1s linear';
 							if(!this.killTimeout){
 								this.killTimeout = setTimeout(function(){
@@ -426,6 +598,32 @@
 						}
 					}
 				}
+				function switchContent(index){ //index不为空时，表示要回到首页
+					var tmp;
+					if(index) {
+						if(curContent == indexPage) return ;
+						nextContent = indexPage;
+					}
+					nextContent.style.zIndex = 100;
+					nextContent.style.left = '0px';
+					nextContent.style.opacity = '1';
+					curContent.style.zIndex = 99;
+					curContent.style.left = clientWidth + 'px';
+					curContent.style.opacity = '0';
+					if(index){
+						tmp = curContent;
+					}
+					else {
+						tmp = (curContent == indexPage? (content==nextContent? content2:content):curContent);
+					}
+					curContent = nextContent;
+					nextContent = tmp;
+					tmp = null;
+					setTimeout(function(){
+						nextContent.style.left = -clientWidth + 'px';
+					},2000);
+				}
+				this.switchContent = switchContent;
 				this.uls = uls;
 				this.init = init;
 				this.droppedSubMenu = null;
