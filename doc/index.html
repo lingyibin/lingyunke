@@ -259,6 +259,13 @@
 				position: relative;
 				height: auto;
 				border-left: 1px solid #B2B1B0;
+				font-family: '楷体';
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 25px;
+			}
+			.txtView .article{
+				text-indent: 40px;
 			}
 			.sideView{
 				float: right;
@@ -272,14 +279,105 @@
 			.article_list{
 				display: block;
 				margin: 20px;
-				font-family: '楷体';
-				font-size: 18px;
-				font-weight: bold;
-				line-height: 25px;
+				position: relative;
+				min-height: 300px;
+				z-index: 10;
 			}
 			.article_list p{
 				margin: 5px 0;
-				text-indent: 40px;
+			}
+			.pageIndex{
+				width: 50%;
+				display: block;
+				float: right;
+				z-index: 11;
+				position: relative;
+			}
+			.pageIndex ul{
+				list-style:none;
+				margin-right: 20px;
+			}
+			.pageIndex ul li{
+				display: list-item;
+				min-width: 30px;
+				min-height: 20px;
+				line-height: 20px;
+				border: 1px #233 solid;
+				background-color: #90908E;
+				box-shadow: -3px 6px 8px #90908E;
+				border-radius: 5px;
+				float: left;
+				text-align: center;
+				margin: 0 5px 10px 0;
+				cursor: pointer;
+			}
+			.rightPage{
+				position:absolute; 
+				background-color:#DAD9D7; 
+				left:0; 
+				top:0; 
+				position: absolute;
+				height:90%;
+				z-index:5; 
+				width:50%;
+				overflow:hidden;
+				-webkit-transform: perspective(1000px) rotateY(180deg);
+				-webkit-transform-origin: right;
+				-webkit-transition-property: transform; 
+				-webkit-transition-duration: 1.5s;
+				-webkit-transition-timing-function: cubic-bezier(0,0.5,0.5,0);
+			}
+			#rightPageSpan{
+				width:200%;
+				position: relative;
+				right: 0;
+				display: block;
+			}
+			.newPage{
+				position:absolute; 
+				background-color:#DAD9D7; 
+				left:0; 
+				top:0; 
+				position: absolute;
+				height:90%;
+				z-index:2; 
+				width:100%;
+				overflow:hidden;
+				-webkit-transform: perspective(1000px) rotateY(0deg);
+				-webkit-transform-origin: left;
+			}
+			#newPageSpan{
+				width:100%;
+				position: relative;
+				right: 0;
+				display: block;
+			}
+			.fakeRight{
+				z-index:4; 
+				position:absolute; 
+				background-color:#DAD9D7; 
+				left:0; 
+				top:0; 
+				position: absolute;
+				height:90%;
+				width:50%;
+				overflow:hidden;
+			}
+			#fakeRightPageSpan{
+				width:200%;
+				position: relative;
+				right: 0;
+			}
+			#shadowPage{
+				position: absolute;
+				background-color: #666;
+				top: 0;
+				right: 0;
+				width: 50%;
+				height: 90%;
+				z-index: 1;
+				opacity:0.1;
+				-webkit-transition: opacity 1s cubic-bezier(0,0.5,0.5,0);
 			}
 		</style>
 	</head>
@@ -342,7 +440,7 @@
 			<div id='index'>
 				<div class='wrapper min_fixed'>
 					<div class='txtView'>
-						<span class='article_list'>
+						<div class='article_list' id='article'>
 				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
 				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
 				是一款非常不错这方便的处理工具。</p>
@@ -352,34 +450,32 @@
 				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
 				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
 				是一款非常不错这方便的处理工具。</p>
-				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
 				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
 				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
 				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
 				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
 				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
 				是一款非常不错这方便的处理工具。</p>
-				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
-				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
-				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
-				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
-				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
-				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
-				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-						</span>
+						</div>
+						<div class='pageIndex'>
+							<ul id='pageIndexUl'>
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>
+								<li>4</li>
+								<li>5</li>
+							</ul>
+						</div>
+						<div class='rightPage article'>
+							<span id='rightPageSpan'></span>
+						</div>
+						<div class='newPage article'>
+							<span id='newPageSpan'></span>
+							<span class='fakeRight'>
+								<span id='fakeRightPageSpan'></span>
+							</span>
+						</div>
+						<div id='shadowPage'></div>
 					</div>
 					<div class='sideView'><p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
 				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
@@ -623,6 +719,62 @@
 						nextContent.style.left = -clientWidth + 'px';
 					},2000);
 				}
+				function setStyle(obj, json){
+					if(obj.length){
+						for(var i=0;i<obj.length;i++){
+							setStyle(obj[i], json);
+						}
+					}
+					else {
+						for(var i in json){
+							obj.style[i]=json[i];
+						}
+					}
+				}
+				//翻页
+				var ready = true,
+					article = $('article'),
+					pageIndexUl = $('pageIndexUl'),
+					rightPage = $('rightPageSpan'),
+					newPage = $('newPageSpan'),
+					shadowPage = $('shadowPage'),
+					fakeRightPage = $('fakeRightPageSpan'),
+					piuls = pageIndexUl.getElementsByTagName('li') || [],
+					txts = ['我不知道各位，一提起C++，第一感觉是什么？而据俺的观察，许多人几乎成了“谈C色变”。不管是C还是C++，一直以来都被很多人视为相当难学的玩意儿，幸好只是一个C++，没有C--，C**和C//，不然，那还得了？曾记得，某年某月某日，在某论坛上看到有牛人说“C++++”，当时我猜想这是啥玩意儿，后来经过一番顺虅摸瓜，深入调查发现，原来有人作了这么个有趣的等式：C# == C++++。显然，这个等式也不太正确，C#不仅继承了C++一些特性，也继承了Delphi中的和VB中的一些优点。','好了，这个等式意义不大，咱们不扯它了。前面我写了许多和移动开发的文章，估计现在移动市场泡沫也差不多膨胀起来了，你说这泡沫，泡到什么程度呢？据说连压根连程序都没写过的人，也嚷着说：移动开发，我要（幸好不是官人，不然动机不纯）。这很容易让人联想到“全民炒股”的创世纪大笑话，中国人貌似很喜欢这样，一曰跟风，二曰盲从。这二者合并起来，正好为市场本质上的“自发性，盲目性”等特征作了相当有力的诠释，难怪罗斯福总统说必要时还得宏观调控。在1932年如果还不调控的话，估计到了1945年，在太平洋战场上完蛋的不是零式战斗机了，该是地狱猫战斗机了，呵呵。不管是移动互联网，还是云计算，各位还是理性地考虑一下吧，认为有需要才进行投资，目前来说，移动市场绝大部分还是在娱乐上，要说真要和商业模式融合，估计现在的手机和平板电脑还达不到这个指标，未来几年有可能开始和商业平台对接，今年的话，不太可能，如果你计划把你的商业应用向移动平台扩展（我这里用扩展，千万不要转移，不然会丢失原来的市场），那么，你现在可能要考虑你现有的应用程序框架到底有多少可以进行扩展了。','不管是移动互联网，还是云计算，各位还是理性地考虑一下吧，认为有需要才进行投资，目前来说，移动市场绝大部分还是在娱乐上，要说真要和商业模式融合，估计现在的手机和平板电脑还达不到这个指标，未来几年有可能开始和商业平台对接，今年的话，不太可能，如果你计划把你的商业应用向移动平台扩展（我这里用扩展，千万不要转移，不然会丢失原来的市场），那么，你现在可能要考虑你现有的应用程序框架到底有多少可以进行扩展了。这扩展一事说起来容易，做起来可不轻松，记得去年我在F公司工作，尝把ERP的功能，从小的模块开始，向Web/电子商务平台整合，技术上是没问题的，但业务逻辑上有可能会一败涂地。所以，有时候，咱们做开发的，学一学市场营销、财务会计、企业管理、HR，甚至是文学艺术，对我们的成长还是有好处的，你只会写程序，有时候很容易“当局者迷”，金庸老先生在小说里常常把这个称为“走火入X”，不知道欧阳锋大哥算不算。','一、指针，真的那么恐怖吗很多人学C语言，就是败在她的“石榴裙”下的，指针（Pointer），这里我为什么要把英文原名写出来了，我目的想让你思考一下，我们常叫它指针，但是，这个翻译到底合不合理？ 在学习C和C++时，很多人会被指针给弄得“六神无主”，虽然大家在许多书上都看到，指针就是用来保存地址的，是吧。然很多人就是无法理解。我这里告诉大家一个技巧，凡是遇到抽象的东西，你就不妨尝试着在客观存在的事物中去寻找与其相似的东西，例如从我们日常生活中入手。我们要明白一个道理，所有抽象的东西，追根到底，都是从客观事物中提取出来的，也就是说，任何抽象的东西，都会在客观世界中找到它的原形。那么，在我们的日常生活中，有没有与C/C++中指针对应的东西呢？有，多得是：指南针。手表。电流表/电压表。汽车上用来显示剩余汽油的表。……看看，这些物体都有什么共同特点？是不是都有一根或者多根指针？比如，下面图片中的山寨手表。现在，我要你从山寨手表中读出其指示的时间，那么，你想一想，你会怎么看出来的这个应该会看吧，小学生都会用了。我们会先看一下时针所指的方向在哪个时刻范围内，如10-11之间，所以我们确定了是10点钟；然后，我们看到分针所指的是第二个刻度，我们读出2，所以一组合，就是10点2。是不是这样读，没读错吧？像电流表也是这样，我们就是通过指针所指的方向找到对应的刻度，就知道当前电流是多少安/毫安，家用的应该是以毫安为单位。我们知道，程序的运行是存在内存中的，因此，我们在代码中声明的所有变量都是存放在内存中的某块区域中，所以，在C语言中，指针用来告诉我们，某个变量在内存中的首地址在哪。','注意，是首地址，因为变量的长度不一定就是一个字节，有可能N多个字节，它在内存中是排列在一段连续的区域块中。比如，某中学的教学楼，每个年级使用一栋楼，初一年级在A栋，初二在B栋，初三在C栋。某学生在校其间，由于多次非礼女同学，老师说要见家长，于是，家长K君来到了某学校，但学校那么大，怎么找到K君的儿子所在的教室呢？这时候，保安人员告诉K君，初二年级在B栋，并用手指着东北方向（指针指向的内存地址块的位置）。于是，K君顺着保安人员手指的方向找到了B栋，他知道他儿子在3班，而楼上的教室都是按顺序的，1班在第一个教室，2班在第二个教室，以此类推。所以，K君很快就找到他儿子，然后把他教育了两顿（访问或处理指针所指向内存中的数据），然后，K君很郁闷地下楼，离开了学校（发生析构，清理内存）。因此，我们可以对指针这样宝义：通过指针中存放的首地址，应用程序顺利地找到某个变量。就好像我最近认识了一位朋友，他叫我有空去他家坐坐，然后，他留下了地址。某个周末我正闲着，忽然想起这位朋友，于是，我就根据他留的地址去找他，结果，当我来到傻B街230号出租房时，里面走出一个我不认识的人，于是，我问他我这位朋友去哪了，陌生人说，我刚租了这房子，你找的可能是前一位租户吧。所以，指针所指向的地址，有可能是变量B，也有可能是变量F，或者变量S，指针是房东，可以把房子租给B，C，或F，它可以动态为变量分配内存，也可以把变量销毁（delete），交不起房租就滚蛋（析构函数）。从上面的故事中，我们看到指针的两个用途：索引内存和分配内存。'];
+				for(var i in piuls){
+					var li = piuls[i];
+					li.index = i;
+					li.onclick = function(){
+						turnLikeABook(txts[this.index]);
+					}
+				}
+				function turnLikeABook(txt){ //rightPage newPage fakeRightPage
+					if(!ready)return;
+					ready=false;
+					article.style.zIndex = 1;
+					shadowPage.style.zIndex = 6;
+					var oriTxt = article.innerHTML,tmpDom;
+					rightPage.innerHTML = oriTxt;
+					setTimeout(function(){
+						rightPage.innerHTML = txt;
+					}, 1000);
+					rightPage.parentNode.style['WebkitTransform'] = 'perspective(1000px) rotateY(0deg)';
+					
+					newPage.innerHTML = txt;
+					fakeRightPage.innerHTML = oriTxt;
+					shadowPage.style.opacity = 0;
+					setTimeout(function(){
+						article.innerHTML = txt;
+						article.style.zIndex = 10;
+						rightPage.innerHTML = '';
+						newPage.innerHTML = '';
+						fakeRightPage.innerHTML = '';
+						rightPage.parentNode.style['WebkitTransitionProperty'] = '';
+						rightPage.parentNode.style['WebkitTransform'] = 'perspective(1000px) rotateY(180deg)';
+						rightPage.parentNode.style['WebkitTransitionProperty'] = 'transform';
+					}, 1500);
+					ready=true;
+				};
 				this.switchContent = switchContent;
 				this.uls = uls;
 				this.init = init;
