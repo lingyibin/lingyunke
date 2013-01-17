@@ -1,0 +1,81 @@
+<style>
+	body{
+		background-color: #000;
+	}
+	.time{
+		margin-top: 10px;
+	}
+	#timeUl{
+		font-size:35px;
+		font-weight:bold;
+		list-style:none;
+		position:relative;
+		padding-left:170px;
+		bottom:10px;
+	}
+	#timeUl li{
+		display: list-item;
+		float:left;
+		min-width:30px;
+		background-color: #fff;
+		margin-left: 5px;
+		border-radius: 3px;
+		text-align: center;
+		box-shadow: -3px 5px 8px #555;
+		-webkit-transition: -webkit-transform 250ms ease;
+	}
+	.changedTime{
+		-webkit-transform: scale(0,-1);
+	}
+</style>
+<div class='time'>
+	<ul id='timeUl'>
+		<li>0</li>
+		<li>0</li>
+		<li>:</li>
+		<li>0</li>
+		<li>0</li>
+		<li>:</li>
+		<li>0</li>
+		<li>0</li>
+	</ul>
+</div>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	window.onload = function(){
+		var timeUl = $('timeUl'),
+			nowTime,timeStr,hh,mm,ss,
+			tmpStr = '00:00:00',
+			lis = timeUl.getElementsByTagName('li'),
+			len = lis.length;
+		for(var i = 0; i < len; i ++){
+			lis[i].addEventListener('webkitTransitionEnd', 
+				function(){
+					this.className = '';
+				},false
+			);
+		}
+		setInterval(function(){
+			nowTime = new Date();
+			hh = nowTime.getHours();
+			mm = nowTime.getMinutes();
+			ss = nowTime.getSeconds();
+			timeStr = (hh>9?'':'0') + hh + ':' + (mm>9?'':'0') + mm + ':' + (ss>9?'':'0') + ss;
+			for(var i in lis){
+				var ch = timeStr.charAt(i),
+					li = lis[i];
+				if(ch !== tmpStr.charAt(i)){
+					li.className = 'changedTime';
+					lis[i].innerHTML = ch;
+				}
+				else {
+					li.className = '';
+				}
+			}
+			//console.log(timeStr);
+			tmpStr = timeStr;
+		}, 1000);
+	}
+</script>
