@@ -276,12 +276,19 @@
 				border-left: 1px solid #B2B1B0;
 			}
 			.sideMotto{
-				border: 1px #555 dashed;
 				padding-left: 20px;
+				background: url(imac2.gif) no-repeat;
+				height: 229px;
+				padding-top: 10px;
+				color:#2BBA19;
+				-webkit-transition: -webkit-transform 1s cubic-bezier(0,0.5,0.5,0);
+			}
+			.sideMotto:hover{
+				-webkit-transform: scale(.4,.4);
 			}
 			.sideMotto p{
 				font-family: '楷体';
-				font-size: 20px;
+				font-size: 15px;
 				font-weight: bold;
 				line-height: 20px;
 			}
@@ -295,6 +302,11 @@
 			}
 			.txtView p{
 				margin: 5px 0;
+			}
+			::selection {
+				color: #09c;
+				background: #e2ebff;
+				text-shadow: -1px 1px 1px #fff;
 			}
 			.pageIndex{
 				width: 50%;
@@ -324,7 +336,6 @@
 			}
 			.rightPage{
 				position:absolute; 
-				border-left: 1px #B2B1B0 solid;
 				border-bottom: 1px #B2B1B0 solid;
 				background-color:#DAD9D7; 
 				left:0; 
@@ -375,7 +386,7 @@
 				background-color:#DAD9D7; 
 				left:0; 
 				top:0; 
-				height:90%;
+				height:100%;
 				min-height: 500px;
 				width:50%;
 				overflow:hidden;
@@ -403,15 +414,22 @@
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: 300px;
+				width: 320px;
 			}
 			#timeUl{
-				font-size:35px;
+				font-size:25px;
 				font-weight:bold;
 				list-style:none;
 				position:relative;
-				bottom:25px;
+				bottom:20px;
 				width: 100%;
+			}
+			.timeWord{
+				position:relative;
+				bottom:10px;
+				width: 100%;	
+				display:block;
+				left: 20px;
 			}
 			#timeUl li{
 				display: list-item;
@@ -427,6 +445,59 @@
 			}
 			.changedTime{
 				-webkit-transform: scale(0,-1);
+			}		
+			.listItem a:visited{color:#1982D9;}
+			.listItem a:link{color:#1982D9;}
+			.listItem a:hover{color:red;}
+			.listItem{
+				width: 47%;
+				display: block;
+				float: left;
+				overflow: hidden;
+				margin: 7px;
+				border-radius: 8px;
+				padding:2px;
+				-webkit-transition: background-color 1s,box-shadow 1s;
+			}
+			.listItem:hover{
+				background-color: #FFA500;
+				box-shadow: -7px 7px 12px #D6BC01;
+			}
+			.listItem a{
+				display: block;
+				width: 100%;
+			}
+			.listItem .title{
+				text-indent: 5px;
+				text-shadow: -1px 1px 1px #555;
+				-webkit-transition: color 1s;
+			}
+			.listItem .listItemTime{
+				font-weight: normal;
+				font-family: '宋体';
+				font-size: 12px;
+				color: #7E7E7D;
+				margin-left: 10px;
+			}
+			.listItem img{
+				width: 20%;
+				height: 80px;
+				float: left;
+				margin: 0 3px;
+			}
+			.listItem p{
+				font-weight: normal;
+				font-family: '宋体';
+				font-size: 14px;
+				text-indent: 5px;
+			}
+			.sideGoodArticles{
+				width: 100%;
+				border: 1px #B2B1B0 dashed;
+				margin-right: 25px;
+			}
+			.sideArticleHeader{
+				
 			}
 		</style>
 	</head>
@@ -492,6 +563,7 @@
 						<li>0</li>
 						<li>0</li>
 					</ul>
+					<span class='timeWord'>一闪而过，当前那一秒是你再也回不去的曾经</span>
 				</div>
 				<span id='fullScreen'></span>
 			</div>
@@ -502,21 +574,93 @@
 				<div class='wrapper min_fixed'>
 					<div class='txtView'>
 						<div class='article_list' id='article'>
-				<p>手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
-				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
-				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
-				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
-				<p>TexturePacker可以直接选定一个文件夹，将里面的小图片生成一个大
-				图片，并输出plist文件的工具。使用该工具，合图就非常简单了。
-				本文不介绍如何使用TexturePacker进行合图，这方便的文章网上非常多。
-				手机游戏开发中，为了提高图片渲染性能，经常需要将小图片合并成
-				一张大图进行渲染。如果手工来做的话就非常耗时。TexturePacker就
-				是一款非常不错这方便的处理工具。</p>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【一】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【二】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【三】
+								</a>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【四】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【五】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【六】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【七】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
+							<span class='listItem'>
+								<a href='#' class='title'>
+									一款非常不错的处理工具【八】
+								</a>
+								<img src='imac.gif'/>
+								<span class='listItemTime'>2013年1月19日&nbsp;——&nbsp;C++&nbsp;|&nbsp;安全</span>
+								<p>
+								手机游戏开发中，为了提高图片渲染性能，为了提高图片渲染性能，经常需要将小图片合并成
+							一张大图进行渲染。
+								</p>
+							</span>
 						</div>
 						<div class='pageIndex'>
 							<ul id='pageIndexUl'>
@@ -540,8 +684,15 @@
 					</div>
 					<div class='sideView'>
 						<div class='sideMotto'>
-							<p>坚持到底，永不放弃！</p>
-							<p style='margin-left: 30px;'>Keep coding <br/>keep learning <br/>keep fighting</p>
+							<p>&gt; 坚持到底，永不放弃！<br/>
+							&gt; keep coding <br/>&gt; keep learning <br/>&gt; keep fighting <br/>&gt; <span id='blinkMotto'>_</span></p>
+						</div>
+						<div class='sideGoodArticles'>
+							<span class='sideArticleHeader'>文章推荐</span>
+							<ul>
+								<li><a href='#'>将小图片合并成一张大图进行渲染</a></li>
+								<li><a href='#'>将小图片合并成一张大图进行渲染</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -669,7 +820,8 @@
 						nowTime,timeStr,hh,mm,ss,
 						tmpStr = '00:00:00',
 						lis = timeUl.getElementsByTagName('li'),
-						len = lis.length;
+						len = lis.length,
+						bm = $('blinkMotto');;
 					for(var i = 0; i < len; i ++){
 						lis[i].addEventListener('webkitTransitionEnd', 
 							function(){
@@ -696,6 +848,7 @@
 						}
 						//console.log(timeStr);
 						tmpStr = timeStr;
+						bm.innerHTML = (bm.innerHTML=='_'?'':'_');
 					}, 1000);
 				}
 				function moveSubMenuBelow(){
