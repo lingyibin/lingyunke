@@ -28,6 +28,8 @@
 				text-shadow:-3px 3px 6px #2BBA19;
 				box-shadow:0 8px 10px #333;
 				-webkit-transition: top 1s ease-in-out 4s;
+				transition: top 1s ease-in-out 4s;
+				-ms-transition: top 1s ease-in-out 4s;
 			}
 			.logo{
 				line-height:50px;
@@ -43,23 +45,35 @@
 				box-shadow:5px 0 10px #333;
 				-webkit-perspective: 500;
 				-webkit-transform-style: preserve-3d;
-				-webkit-transition: perspective 5s;
-				-webkit-transition-property: transform;
+				-webkit-transition: -webkit-perspective 5s;
+				-webkit-transition-property: -webkit-transform;
 				-webkit-transition-duration: 1s;
 				-webkit-transform: rotateY(0deg);
 				perspective: 500;
 				transform-style: preserve-3d;
 				transition: perspective 0.5s, transform 1s;
 				transform: rotateY(0deg);
+				-o-perspective: 5000;
+				-o-transition: -o-transform 1s ease;
+				-o-transform: rotateY(0deg);
+				-ms-perspective: 500;
+				-ms-transform-style: preserve-3d;
+				-ms-transition: perspective 5s;
+				-ms-transition-property: transform;
+				-ms-transition-duration: 1s;
+				-ms-transform: rotateY(0deg);
 			}
 			.logo:hover{
 				-webkit-perspective: 5000;
 				-webkit-transform: rotateY(180deg);
 				perspective: 5000;
 				transform: rotateY(180deg);
+				-o-transform: rotateY(180deg);
+				-ms-perspective: 5000;
+				-ms-transform: rotateY(180deg);
 			}
-			.logo a:visited{color:#2BBA19;}
-			.logo a:link{color:#2BBA19;}
+			.logo a:visited{color:#2BBA19;text-decoration:none;}
+			.logo a:link{color:#2BBA19;text-decoration:none;}
 			.nav{
 				font-size:20px;
 				list-style:none;
@@ -80,11 +94,13 @@
 			.nav li:hover{
 				box-shadow:-8px 10px 7px #000;
 			}
-			.nav li a:visited{color:#2BBA19;}
-			.nav li a:link{color:#2BBA19;}
+			.nav li a:visited{color:#2BBA19;text-decoration:none;}
+			.nav li a:link{color:#2BBA19;text-decoration:none;}
 			.nav li a:hover{color:#DAD9D7;}
 			#menu{
 				-webkit-perspective: 500;
+				perspective: 500;
+				-o-perspective: 500;
 				height:40px;
 				width: auto;
 				float: left;
@@ -105,32 +121,64 @@
 				opacity: 0;
 				-webkit-transform-origin: 65% 50%;
 				-webkit-transition: opacity 1s, -webkit-transform 1s;
+				-o-transform-origin: 65% 50%;
+				-o-transition: opacity 1s, -o-transform 1s;
+				transform-origin: 65% 50%;
+				transition: opacity 1s, transform 1s;
 			}
 			@-webkit-keyframes turnSubMenu{
                 0%{-webkit-transform: rotateY(0deg);}
                 100%{-webkit-transform: rotateY(360deg);}
+			}
+			@-moz-keyframes turnSubMenu{
+                0%{-moz-transform: rotateY(0deg);}
+                100%{-moz-transform: rotateY(360deg);}
 			}
 			@-webkit-keyframes shrinkMenu{
                 0%{left:-35px;-webkit-transform: rotate(-480deg);}
                 25%{left:150px;-webkit-transform: rotate(0deg);}
                 100%{left:150px;-webkit-transform: rotate(1080deg);}
 			}
+			@-moz-keyframes shrinkMenu{
+                0%{left:-35px;-moz-transform: rotate(-480deg);}
+                25%{left:150px;-moz-transform: rotate(0deg);}
+                100%{left:150px;-moz-transform: rotate(1080deg);}
+			}
 			@-webkit-keyframes shrinkMenuBack{
                 0%{left:150px;-webkit-transform: rotate(1080deg);}
                 75%{left:150px;-webkit-transform: rotate(0deg);}
                 100%{left:-35px;-webkit-transform: rotate(-720deg);}
+			}
+			@-moz-keyframes shrinkMenuBack{
+                0%{left:150px;-moz-transform: rotate(1080deg);}
+                75%{left:150px;-moz-transform: rotate(0deg);}
+                100%{left:-35px;-moz-transform: rotate(-720deg);}
 			}
 			@-webkit-keyframes moveWheel{
                 0%{top:15px;left:150px;-webkit-transform: rotate(0deg);}
                 50%{top:115px;left:150px;-webkit-transform: rotate(360deg);}
                 100%{top:115px;left:5px;-webkit-transform: rotate(720deg);}
 			}
+			@-moz-keyframes moveWheel{
+                0%{top:15px;left:150px;-moz-transform: rotate(0deg);}
+                50%{top:115px;left:150px;-moz-transform: rotate(360deg);}
+                100%{top:115px;left:5px;-moz-transform: rotate(720deg);}
+			}
 			@-webkit-keyframes moveWheel2{
                 0%{top:115px;left:5px;-webkit-transform: rotate(720deg);}
                 50%{top:115px;left:150px;-webkit-transform: rotate(360deg);}
                 100%{top:15px;left:150px;-webkit-transform: rotate(0deg);}
 			}
+			@-moz-keyframes moveWheel2{
+                0%{top:115px;left:5px;-moz-transform: rotate(720deg);}
+                50%{top:115px;left:150px;-moz-transform: rotate(360deg);}
+                100%{top:15px;left:150px;-moz-transform: rotate(0deg);}
+			}
 			@-webkit-keyframes hideMenu{
+                0%{left:0;}
+                100%{left:-670px;}
+			}
+			@-moz-keyframes hideMenu{
                 0%{left:0;}
                 100%{left:-670px;}
 			}
@@ -138,7 +186,15 @@
                 0%{left:-130px;}
                 100%{left:-670px;}
 			}
+			@-moz-keyframes hideMenu2{
+                0%{left:-130px;}
+                100%{left:-670px;}
+			}
 			@-webkit-keyframes showMenu{
+                0%{left:-670px;}
+                100%{left:-130px;}
+			}
+			@-moz-keyframes showMenu{
                 0%{left:-670px;}
                 100%{left:-130px;}
 			}
@@ -146,9 +202,17 @@
                 0%{-webkit-transform: rotate(0deg);}
                 100%{-webkit-transform: rotate(360deg);}
 			}
+			@-moz-keyframes wheelWhenHideMenu2{
+                0%{-moz-transform: rotate(0deg);}
+                100%{-moz-transform: rotate(360deg);}
+			}
 			@-webkit-keyframes wheelWhenShowMenu{
                 0%{-webkit-transform: rotate(360deg);}
                 100%{-webkit-transform: rotate(0deg);}
+			}
+			@-moz-keyframes wheelWhenShowMenu{
+                0%{-moz-transform: rotate(360deg);}
+                100%{-moz-transform: rotate(0deg);}
 			}
 			.subMenu ul li{
 				display: list-item;
@@ -163,8 +227,8 @@
 			.subMenu ul li:hover{
 				box-shadow:3px -3px 7px #000;
 			}
-			.subMenu ul li a:visited{color:#2BBA19;}
-			.subMenu ul li a:link{color:#2BBA19;}
+			.subMenu ul li a:visited{color:#2BBA19;text-decoration:none;}
+			.subMenu ul li a:link{color:#2BBA19;text-decoration:none;}
 			.subMenu ul li a:hover{color:#DAD9D7;}
 			.otherHeaderBtn{
 				height:60px;
@@ -265,6 +329,7 @@
 				font-weight: bold;
 				line-height: 25px;
 				-webkit-transition: width 1s;
+				transition: width 1s;
 			}
 			.sideView{
 				float: right;
@@ -276,6 +341,7 @@
 				padding-left: 15px;
 				border-left: 1px solid #B2B1B0;
 				-webkit-transition: opacity 1s linear;
+				transition: opacity 1s linear;
 			}
 			.sideMotto{
 				padding-left: 20px;
@@ -284,9 +350,11 @@
 				padding-top: 10px;
 				color:#2BBA19;
 				-webkit-transition: -webkit-transform 1s cubic-bezier(0,0.5,0.5,0);
+				transition: transform 1s cubic-bezier(0,0.5,0.5,0);
 			}
 			.sideMotto:hover{
 				-webkit-transform: scale(.9,.9);
+				transform: scale(.9,.9);
 			}
 			.sideMotto p{
 				font-family: '楷体';
@@ -353,6 +421,11 @@
 				-webkit-transition-property: transform;
 				-webkit-transition-duration: 1.5s;
 				-webkit-transition-timing-function: cubic-bezier(0,0.5,0.5,0);
+				transform: perspective(1000px) rotateY(180deg);
+				transform-origin: right;
+				transition-property: transform;
+				transition-duration: 1.5s;
+				transition-timing-function: cubic-bezier(0,0.5,0.5,0);
 			}
 			#rightPageSpan{
 				position: relative;
@@ -374,6 +447,8 @@
 				overflow:hidden;
 				-webkit-transform: perspective(1000px) rotateY(0deg);
 				-webkit-transform-origin: left;
+				transform: perspective(1000px) rotateY(0deg);
+				transform-origin: left;
 			}
 			#newPageSpan{
 				position: relative;
@@ -411,6 +486,7 @@
 				z-index: 1;
 				opacity:0.1;
 				-webkit-transition: opacity 1s cubic-bezier(0,0.5,0.5,0);
+				transition: opacity 1s cubic-bezier(0,0.5,0.5,0);
 			}			
 			.time{
 				position: relative;
@@ -444,12 +520,14 @@
 				border: 1px #666 solid;
 				box-shadow: -2px 5px 12px #000;
 				-webkit-transition: -webkit-transform 250ms ease;
+				transition: transform 250ms ease;
 			}
 			.changedTime{
 				-webkit-transform: scale(0,-1);
+				transform: scale(0,-1);
 			}		
-			.listItem a:visited{color:#1982D9;}
-			.listItem a:link{color:#1982D9;}
+			.listItem a:visited{color:#1982D9;text-decoration:none;}
+			.listItem a:link{color:#1982D9;text-decoration:none;}
 			.listItem a:hover{color:red;}
 			.listItem{
 				width: 47%;
@@ -460,6 +538,7 @@
 				border-radius: 8px;
 				padding:2px;
 				-webkit-transition: background-color 1s,box-shadow 1s;
+				transition: background-color 1s,box-shadow 1s;
 			}
 			.listItem:hover{
 				background-color: #FFA500;
@@ -473,6 +552,7 @@
 				text-indent: 5px;
 				text-shadow: 0px 1px 1px #555;
 				-webkit-transition: color 1s;
+				transition: color 1s;
 			}
 			.listItem .listItemTime{
 				font-weight: normal;
@@ -504,7 +584,8 @@
 				border: 1px #B2B1B0 dashed;
 			}
 			.sideGoodArticles a{
-				-webkit-transition: color 1s;			
+				-webkit-transition: color 1s;	
+				transition: color 1s;		
 			}
 			.sideGoodArticles ul{
 				margin: 0;
@@ -517,8 +598,8 @@
 				text-shadow: 0px 1px 1px #555;
 				margin-bottom: 5px;
 			}
-			.sideGoodArticles a:visited{color:#1982D9;}
-			.sideGoodArticles a:link{color:#1982D9;}
+			.sideGoodArticles a:visited{color:#1982D9;text-decoration:none;}
+			.sideGoodArticles a:link{color:#1982D9;text-decoration:none;}
 			.sideGoodArticles a:hover{color:red;}
 			.sideArticleHeader{
 				font-weight: normal;
@@ -544,6 +625,7 @@
 			}
 			.sideTags a{
 				-webkit-transition: color 1s;
+				transition: color 1s;
 				font-size: 16px;
 			}
 			.sideTags ul{
@@ -551,6 +633,7 @@
 				list-style:none;
 				display: inline;
 				border: 1px #B2B1B0 dashed;
+				padding-left: 0px;
 			}
 			.sideTags ul li span{
 				font-size: 14px;				
@@ -566,13 +649,15 @@
 				width: 80px;
 				height: 40px;
 				-webkit-transition: background-color 700ms;
+				transition: background-color 700ms;
 			}
 			.sideTags ul li:hover{
 				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
 				background-color: #0F6D39;
 			}
-			.sideTags a:visited{color:#fff;}
-			.sideTags a:link{color:#fff;}
+			.sideTags a:visited{color:#fff;text-decoration:none;}
+			.sideTags a:link{color:#fff;text-decoration:none;}
 			.sideTags a:hover{color:red;}
 			.sideLinks{
 				width: 99%;
@@ -593,6 +678,7 @@
 				list-style:none;
 				display: inline;
 				border: 1px #B2B1B0 dashed;
+				padding-left: 0px;
 			}
 			.sideLinks ul li{
 				display: list-item;	
@@ -622,8 +708,8 @@
 				font-weight: bold;
 				font-size: 18px;
 			}
-			.sideLinks .linkName a:visited{color:#000;}
-			.sideLinks .linkName a:link{color:#000;}
+			.sideLinks .linkName a:visited{color:#000;text-decoration:none;}
+			.sideLinks .linkName a:link{color:#000;text-decoration:none;}
 			.sideLinks .linkName a:hover{color:red;}
 			.wayToShowList{
 				width: 72%;
@@ -648,7 +734,7 @@
 			.search{
 				float: left;
 				border: 1px;
-				height: 33px;
+				height: 23px;
 				width: 80%;
 				vertical-align: middle;
 				font-size: 14px;
@@ -664,7 +750,7 @@
 				width: 50%;
 			}
 			.searchBtn{
-				width: 19%;
+				width: 17%;
 				float: right;
 				border-radius: 5px;
 				height: 37px;
@@ -751,8 +837,8 @@
 			<div id='index'>
 				<div class='wrapper min_fixed'>
 					<div class='searchWrapper'>
-						<input type="search" class='search' placeholder="请说出或输入关键字搜索" maxlength="50" name="search" id="search" x-webkit-speech x-webkit-grammar="builtin:search"/>
-						<span class='searchBtn'>搜索</span>
+						<input type="search" class='search' placeholder="请输入关键字搜索" maxlength="50" name="search" id="search" x-webkit-speech x-webkit-grammar="builtin:search"/>
+						<span class='searchBtn' id='searchBtn'>搜索</span>
 					</div>
 					<div class='wayToShowList'>
 						<span id='picTxtForm' class='selected'>图文</span>
@@ -810,7 +896,7 @@
 								</li>
 								<li>
 									<a href='#'>H5/CSS3</a><br/>
-									<span> (10)</span>
+									<span>(10)</span>
 								</li>
 								<li>
 									<a href='#'>Python</a><br/>
@@ -912,6 +998,7 @@
 					//rightPage = $('rightPageSpan'),
 					newPage = $('newPageSpan'),
 					shadowPage = $('shadowPage'),
+					searchInput = $('search'),
 					fakeRightPage = $('fakeRightPageSpan'),
 					piuls = pageIndexUl.getElementsByTagName('li') || [],
 					curContent = indexPage,
@@ -927,6 +1014,8 @@
 					allowSubMenu = true,//这个变量用在，当菜单在播放动画时，不允许子菜单弹出			
 					ready = true,
 					rightPageP,rightPage,
+					version = navigator.userAgent.toLowerCase(),
+					vendors = ['webkit-','','-moz-','o-','-ms-','-khtml-'],
 					txts = ['我不知道各位，一提起C++，第一感觉是什么？而据俺的观察，许多人几乎成了“谈C色变”。不管是C还是C++，一直以来都被很多人视为相当难学的玩意儿，幸好只是一个C++，没有C--，C**和C//，不然，那还得了？曾记得，某年某月某日，在某论坛上看到有牛人说“C++++”，当时我猜想这是啥玩意儿，后来经过一番顺虅摸瓜，深入调查发现，原来有人作了这么个有趣的等式：C# == C++++。显然，这个等式也不太正确，C#不仅继承了C++一些特性，也继承了Delphi中的和VB中的一些优点。','好了，这个等式意义不大，咱们不扯它了。前面我写了许多和移动开发的文章，估计现在移动市场泡沫也差不多膨胀起来了，你说这泡沫，泡到什么程度呢？据说连压根连程序都没写过的人，也嚷着说：移动开发，我要（幸好不是官人，不然动机不纯）。这很容易让人联想到“全民炒股”的创世纪大笑话，中国人貌似很喜欢这样，一曰跟风，二曰盲从。这二者合并起来，正好为市场本质上的“自发性，盲目性”等特征作了相当有力的诠释，难怪罗斯福总统说必要时还得宏观调控。在1932年如果还不调控的话，估计到了1945年，在太平洋战场上完蛋的不是零式战斗机了，该是地狱猫战斗机了，呵呵。不管是移动互联网，还是云计算，各位还是理性地考虑一下吧，认为有需要才进行投资，目前来说，移动市场绝大部分还是在娱乐上，要说真要和商业模式融合，估计现在的手机和平板电脑还达不到这个指标，未来几年有可能开始和商业平台对接，今年的话，不太可能，如果你计划把你的商业应用向移动平台扩展（我这里用扩展，千万不要转移，不然会丢失原来的市场），那么，你现在可能要考虑你现有的应用程序框架到底有多少可以进行扩展了。','不管是移动互联网，还是云计算，各位还是理性地考虑一下吧，认为有需要才进行投资，目前来说，移动市场绝大部分还是在娱乐上，要说真要和商业模式融合，估计现在的手机和平板电脑还达不到这个指标，未来几年有可能开始和商业平台对接，今年的话，不太可能，如果你计划把你的商业应用向移动平台扩展（我这里用扩展，千万不要转移，不然会丢失原来的市场），那么，你现在可能要考虑你现有的应用程序框架到底有多少可以进行扩展了。这扩展一事说起来容易，做起来可不轻松，记得去年我在F公司工作，尝把ERP的功能，从小的模块开始，向Web/电子商务平台整合，技术上是没问题的，但业务逻辑上有可能会一败涂地。所以，有时候，咱们做开发的，学一学市场营销、财务会计、企业管理、HR，甚至是文学艺术，对我们的成长还是有好处的，你只会写程序，有时候很容易“当局者迷”，金庸老先生在小说里常常把这个称为“走火入X”，不知道欧阳锋大哥算不算。','一、指针，真的那么恐怖吗很多人学C语言，就是败在她的“石榴裙”下的，指针（Pointer），这里我为什么要把英文原名写出来了，我目的想让你思考一下，我们常叫它指针，但是，这个翻译到底合不合理？ 在学习C和C++时，很多人会被指针给弄得“六神无主”，虽然大家在许多书上都看到，指针就是用来保存地址的，是吧。然很多人就是无法理解。我这里告诉大家一个技巧，凡是遇到抽象的东西，你就不妨尝试着在客观存在的事物中去寻找与其相似的东西，例如从我们日常生活中入手。我们要明白一个道理，所有抽象的东西，追根到底，都是从客观事物中提取出来的，也就是说，任何抽象的东西，都会在客观世界中找到它的原形。那么，在我们的日常生活中，有没有与C/C++中指针对应的东西呢？有，多得是：指南针。手表。电流表/电压表。汽车上用来显示剩余汽油的表。……看看，这些物体都有什么共同特点？是不是都有一根或者多根指针？比如，下面图片中的山寨手表。现在，我要你从山寨手表中读出其指示的时间，那么，你想一想，你会怎么看出来的这个应该会看吧，小学生都会用了。我们会先看一下时针所指的方向在哪个时刻范围内，如10-11之间，所以我们确定了是10点钟；然后，我们看到分针所指的是第二个刻度，我们读出2，所以一组合，就是10点2。是不是这样读，没读错吧？像电流表也是这样，我们就是通过指针所指的方向找到对应的刻度，就知道当前电流是多少安/毫安，家用的应该是以毫安为单位。我们知道，程序的运行是存在内存中的，因此，我们在代码中声明的所有变量都是存放在内存中的某块区域中，所以，在C语言中，指针用来告诉我们，某个变量在内存中的首地址在哪。','注意，是首地址，因为变量的长度不一定就是一个字节，有可能N多个字节，它在内存中是排列在一段连续的区域块中。比如，某中学的教学楼，每个年级使用一栋楼，初一年级在A栋，初二在B栋，初三在C栋。某学生在校其间，由于多次非礼女同学，老师说要见家长，于是，家长K君来到了某学校，但学校那么大，怎么找到K君的儿子所在的教室呢？这时候，保安人员告诉K君，初二年级在B栋，并用手指着东北方向（指针指向的内存地址块的位置）。于是，K君顺着保安人员手指的方向找到了B栋，他知道他儿子在3班，而楼上的教室都是按顺序的，1班在第一个教室，2班在第二个教室，以此类推。所以，K君很快就找到他儿子，然后把他教育了两顿（访问或处理指针所指向内存中的数据），然后，K君很郁闷地下楼，离开了学校（发生析构，清理内存）。因此，我们可以对指针这样宝义：通过指针中存放的首地址，应用程序顺利地找到某个变量。就好像我最近认识了一位朋友，他叫我有空去他家坐坐，然后，他留下了地址。某个周末我正闲着，忽然想起这位朋友，于是，我就根据他留的地址去找他，结果，当我来到傻B街230号出租房时，里面走出一个我不认识的人，于是，我问他我这位朋友去哪了，陌生人说，我刚租了这房子，你找的可能是前一位租户吧。所以，指针所指向的地址，有可能是变量B，也有可能是变量F，或者变量S，指针是房东，可以把房子租给B，C，或F，它可以动态为变量分配内存，也可以把变量销毁（delete），交不起房租就滚蛋（析构函数）。从上面的故事中，我们看到指针的两个用途：索引内存和分配内存。'],				
 					picTxtJson = [{
 							title: '一款非常不错的处理工具【一】',
@@ -1051,6 +1140,12 @@
 					bindFullScreenEvent();
 					displayListInTheForm();
 					bindListSelectBtnEvent(); //列表选项
+					checkIE(); 
+					//chrome上的input高度比较特殊
+					if(isChrome()){
+						searchInput.style.height = '33px';
+						searchBtn.style.width = '19%';
+					}
 				};
 				// 右上角的时间
 				var setTimeOn = function (){
@@ -1059,13 +1154,16 @@
 						tmpStr = '00:00:00',
 						lis2 = timeUl.getElementsByTagName('li'),
 						len = lis2.length,
-						bm = $('blinkMotto');;
-					for(var i = 0; i < len; i ++){
-						lis2[i].addEventListener('webkitTransitionEnd', 
-							function(){
-								this.className = '';
-							},false
-						);
+						bm = $('blinkMotto'),
+						transitionEnd = getCss3StyleName(txtView,'transition', 'transition-end');
+					if(transitionEnd){
+						for(var i = 0; i < len; i ++){
+							lis2[i].addEventListener(transitionEnd, 
+								function(){
+									this.className = '';
+								},false
+							);
+						}
 					}
 					setInterval(function(){
 						nowTime = new Date();
@@ -1106,6 +1204,8 @@
 					}
 				};
 				var bindMenuEvent = function (){
+					if(isOperaOrIE()) baseLeft = 160;
+					else baseLeft = 0;
 					for(var i = 1; i < lenUl; i ++){
 						var ul = uls[i], li = lis[i-2] || {clientWidth:0};
 						ulsDic[ul.className] = ul;
@@ -1126,10 +1226,12 @@
 							}
 							this.killTimer = setTimeout(function(){
 								that.style.opacity = 0;
-								that.style['WebkitTransform'] = 'scale(2)';
+								setCSS3Style(that, 'transform','scale(2)');
+								//that.style['WebkitTransform'] = 'scale(2)';
 								setTimeout(function(){
 									that.style.display = 'none';
-									that.style['WebkitTransform'] = 'scale(1)';
+									setCSS3Style(that, 'transform','scale(1)');
+									//that.style['WebkitTransform'] = 'scale(1)';
 								} ,1000);
 								//ul.style.height = '0';
 								//that.isover = false;
@@ -1155,16 +1257,20 @@
 							//ul.style.height = '200px';
 							$.droppedSubMenu = ul;
 							$.activeMenuItem = this;
-							ul.style['WebkitAnimation'] = 'turnSubMenu .6s linear';
+							//ul.style['WebkitAnimation'] = 'turnSubMenu .6s linear';
+							setCSS3Style(ul,'animation','turnSubMenu .6s linear');
+							//ul.style['animation'] = 'turnSubMenu .6s linear';
 							//ul.style['MozAnimation'] = 'turnSubMenu 1s linear';
 							if(!this.killTimeout){
 								this.killTimeout = setTimeout(function(){
 									if(!ul.killTimer){
 										ul.style.opacity = 0;
-										ul.style['WebkitTransform'] = 'scale(2)';
+										setCSS3Style(ul, 'transform','scale(2)');
+										//ul.style['WebkitTransform'] = 'scale(2)';
 										setTimeout(function(){
 											ul.style.display = 'none';
-											ul.style['WebkitTransform'] = 'scale(1)';
+											setCSS3Style(ul, 'transform','scale(1)');
+											//ul.style['WebkitTransform'] = 'scale(1)';
 										} ,1000);
 										//ul.style.display = 'none';
 										//ul.style.height = '0';
@@ -1234,14 +1340,18 @@
 						//checkAndKillPreSubmenu();
 						if(!this.isFull){
 							header.style.top = '-70px';
-							movingMenu.style['WebkitAnimation'] = 'shrinkMenu 4s linear, moveWheel 2s linear 4s';
-							$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 1s';
+							setCSS3Style(movingMenu,'animation','shrinkMenu 4s linear, moveWheel 2s linear 4s');
+							setCSS3Style($.mainMenu,'animation','hideMenu 3s linear 1s');
+							//movingMenu.style['WebkitAnimation'] = 'shrinkMenu 4s linear, moveWheel 2s linear 4s';
+							//$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 1s';
 							//movingMenu.style.left = '150px';
 							setTimeout(function(){
 								$.mainMenu.style.left = '-670px';
 								sideView.style.display = 'none';					
 								for(var i = 0; i < lenLi; i ++){
-									lis[i].style.float = 'none';
+									if(isFirefox()) lis[i].style.cssFloat = 'none';
+									else lis[i].style.float = 'none';
+									//console.log(lis[i].style.float);
 									lis[i].style.width = '90px';
 								}
 							},4000);
@@ -1266,9 +1376,11 @@
 						else{
 							header.style.top = '0';
 							movingMenu.innerHTML = '';
-							movingMenu.style['WebkitAnimation'] = 'moveWheel2 2s linear, shrinkMenuBack 5s linear 2s';
+							setCSS3Style(movingMenu, 'animation', 'moveWheel2 2s linear, shrinkMenuBack 5s linear 2s');
+							//movingMenu.style['WebkitAnimation'] = 'moveWheel2 2s linear, shrinkMenuBack 5s linear 2s';
 							setTimeout(function(){
-								$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 2 -3s alternate';
+								setCSS3Style($.mainMenu, 'animation', 'hideMenu 3s linear 2 -3s alternate');
+								//$.mainMenu.style['WebkitAnimation'] = 'hideMenu 3s linear 2 -3s alternate';
 								movingMenu.isMenuVisible = false;
 							}, 3000);
 							//if(movingMenu.isMenuVisible){
@@ -1281,7 +1393,8 @@
 								$.fullingScreen = false;
 							},7000);
 							for(var i = 0; i < lenLi; i ++){
-								lis[i].style.float = 'left';
+								if(isFirefox()) lis[i].style.cssFloat = 'left';
+								else lis[i].style.float = 'left';
 								lis[i].style.width = 'auto';
 							}
 							//}
@@ -1307,14 +1420,18 @@
 						$.allowSubMenu = false;
 						var that=this;
 						if(!this.isMenuVisible){
-							$.mainMenu.style['WebkitAnimation'] = 'showMenu 1s linear';
-							this.style['WebkitAnimation'] = 'wheelWhenShowMenu 1s linear';
+							setCSS3Style($.mainMenu, 'animation', 'showMenu 1s linear');
+							//$.mainMenu.style['WebkitAnimation'] = 'showMenu 1s linear';
+							setCSS3Style(that, 'animation', 'wheelWhenShowMenu 1s linear');
+							//this.style['WebkitAnimation'] = 'wheelWhenShowMenu 1s linear';
 							$.mainMenu.style.left = '-150px';
 							this.isMenuVisible = true;	
 						}
 						else {
-							$.mainMenu.style['WebkitAnimation'] = 'hideMenu2 1s linear';
-							this.style['WebkitAnimation'] = 'wheelWhenHideMenu2 1s linear';
+							setCSS3Style($.mainMenu, 'animation', 'hideMenu2 1s linear');
+							setCSS3Style(that, 'animation', 'wheelWhenHideMenu2 1s linear');
+							//$.mainMenu.style['WebkitAnimation'] = 'hideMenu2 1s linear';
+							//this.style['WebkitAnimation'] = 'wheelWhenHideMenu2 1s linear';
 							$.mainMenu.style.left = '-670px';
 							setTimeout(function(){
 								that.isMenuVisible = false;
@@ -1417,6 +1534,11 @@
 				var turnLikeABook = function (txt){ //rightPage newPage fakeRightPage
 					if(!ready)return;
 					ready=false;
+					if(isIE()){
+						article.innerHTML = txt;
+						ready=true;
+						return;
+					}
 					article.style.zIndex = 1;
 					var oriTxt = article.innerHTML,//tmpDom;
 						arcticleWidth = article.clientWidth,
@@ -1430,7 +1552,7 @@
 					shadowPage.parentNode.insertBefore(rightPageP,newPage.parentNode);
 					//rightPageP.style.webkitTransition = '-webkit-transform 1.5 cubic-bezier(0,0.5,0.5,0), opacity 0';
 					fakeRightPage.innerHTML = oriTxt;
-					rightPage.innerHTML = '<span style="position: absolute;top:' + wheelTop + 'px;left:' + (arcticleWidth/4-110) + 'px;"><img src="movingMenu.gif" style="-webkit-transform-origin: 50% 50%;-webkit-animation: wheelWhenShowMenu .7s linear infinite;" width=100 height=100/></span>';
+					rightPage.innerHTML = '<span style="position: absolute;top:' + wheelTop + 'px;left:' + (arcticleWidth/4-110) + 'px;"><img src="movingMenu.gif" style="-webkit-transform-origin: 50% 50%;-webkit-animation: wheelWhenShowMenu .7s linear infinite;transform-origin: 50% 50%;animation: wheelWhenShowMenu .7s linear infinite;" width=100 height=100/></span>';
 					rightPage.style.width = arcticleWidth+'px';
 					newPage.style.width = arcticleWidth+'px';
 					fakeRightPage.style.width = arcticleWidth+'px';
@@ -1442,7 +1564,8 @@
 						setTimeout(function(){
 							rightPage.innerHTML = txt;
 						}, 1000);
-						rightPageP.style['WebkitTransform'] = 'perspective(1000px) rotateY(0deg)';
+						setCSS3Style(rightPageP, 'transform', 'perspective(1000px) rotateY(0deg)');
+						//rightPageP.style['WebkitTransform'] = 'perspective(1000px) rotateY(0deg)';
 						
 						newPage.innerHTML = txt;
 						shadowPage.style.opacity = 0;
@@ -1466,9 +1589,59 @@
 				/** 翻页 end */
 				
 				var search = function(){
-					var searchDom = $('search');
-					alert(searchDom.value);
+					alert(searchInput.value);
 				};
+				var toCamelCase = function (str){
+					return str.toLowerCase().replace(/(\-[a-z])/g, function($1){
+						return $1.toUpperCase().replace('-','');
+					});
+				};
+				var setCSS3Style = function (el,prop,val){
+					for(var i = 0,l = vendors.length; i < l; i ++){
+						var p = toCamelCase(vendors[i] + prop);
+						//console.log(p + (p in el.style));
+						if(p in el.style){
+							el.style[p] = val;
+							return;
+						}
+					}
+				};
+				var getCss3StyleName = function (el,prop,toRet){
+					var len = vendors.length;
+					for(var i = 0,l = len;i < l;i ++){
+						var p = toCamelCase(vendors[i] + prop);
+						if(p in el.style){
+							if(toRet){
+								//firefox只支持transitionend，end中e不能大写
+								if(isFirefox() > -1) toRet=toRet.replace('-','');
+								p = toCamelCase(vendors[i] + toRet);
+							}
+							//console.log(p + (p in el.style));
+							return p;
+						}
+					}
+					return null;
+				};				
+				var isOperaOrIE = function(){
+					return /(opera|msie)/.test(version);
+				}
+				var isFirefox = function(){
+					return /firefox/.test(version);
+				}
+				var isChrome = function(){
+					return /chrome/.test(version);
+				}
+				var isIE = function(){
+					return /msie/.test(version);
+				}
+				var checkIE = function(){
+					if(isIE()){
+						if(!$.cache.fetch('ie_alert')){
+							alert('您正在使用IE内核的浏览器，换用极速内核、或谷歌浏览器、火狐浏览器、Opera浏览器可以获得更酷的效果哦！');
+							$.cache.store('ie_alert', '1');
+						}
+					}
+				}
 				
 				this.cache = {};
 				this.list = {};
@@ -1480,6 +1653,7 @@
 				this.firstLoadList = true;
 				this.switchContent = switchContent;
 				this.uls = uls;
+				this.version = version;
 				this.init = init;
 				this.droppedSubMenu = null;
 				this.activeMenuItem = null;
@@ -1527,11 +1701,14 @@
 				this.store = store;
 				this.fetch = fetch;
 			}).apply($.cache);
-			
-				var search = function(){
-					var searchDom = $('search');
-					alert(searchDom.value);
-				};
+/*
+ * Check Browser
+ * Readme: http://xliar.com/thread-138-1-1.html
+ * Author: webmaster@xliar.com, weibo.com/antiliar
+ * 2013/01/14
+ */
+function checkBrowser(b,c,a){try{if(!document.body)return alert("Please call checkBrowser() in <body></body>."),a();if(marked())return b();var d=$.version;if(/(firefox|opera|lbbrowser|qqbrowser|tencenttraveler|bidubrowser|alibrowser|maxthon|se [0-9]\.x|greenbrowser|myie2|theworld|avast|comodo)/ig.test(d)||/(baidu|soso|sogou|youdao|jike|google|bing|msn|yahoo)/ig.test(d))return a();if(/(360|qihu)/ig.test(d))return mark(),b();if(/chrome/ig.test(d)){if(subtitleEnabled()&&microdataEnabled()&&scopedEnabled())return mark(),b()}else if(/safari/ig.test(d))return a();return/msie/ig.test(d)&&!addSearchProviderEnabled()&&"undefined"==String(window.external)?checkBrowserEx(b,c):a()}catch(e){alert(e)}}function checkBrowserEx(b,c){var a=document.createElement("script");a.setAttribute("type","text/javascript");var d=document.getElementsByTagName("head")[0];d.appendChild(a);a.onload=a.onreadystatechange=function(){if("loaded"==this.readyState){var e=(new UserAgents).browser.name;"undefined"==typeof e?c():/360 (safe|extreme)/ig.test(e)?(mark(),b()):c();d.removeChild(a)}};a.setAttribute("src","http://html5test.com/scripts/useragents.php");return 0}function mark(){document.cookie="helloThisIs360Browser;expires=Wed, 30 Dec 2020 20:20:20 GMT"}function marked(){return-1!=document.cookie.indexOf("helloThisIs360Browser")}function subtitleEnabled(){return"track"in document.createElement("track")}function scopedEnabled(){return"scoped"in document.createElement("style")}function addSearchProviderEnabled(){return!(!window.external||!("undefined"!=typeof window.external.AddSearchProvider&&"undefined"!=typeof window.external.IsSearchProviderInstalled))}function microdataEnabled(){var b=document.createElement("div");b.innerHTML='<div id="microdataItem" itemscope itemtype="http://example.net/user"><p>My name is <span id="microdataProperty" itemprop="name">Jason</span>.</p></div>';document.body.appendChild(b);var c=document.getElementById("microdataItem"),a=document.getElementById("microdataProperty"),a=(a=!!("itemValue"in a)&&"Jason"==a.itemValue)&&!!("properties"in c)&&"Jason"==c.properties.name[0].itemValue;document.getItems&&(c=document.getItems("http://example.net/user")[0],a=a&&"Jason"==c.properties.name[0].itemValue);document.body.removeChild(b);return a}function deny(){alert("\u60a8\u6b63\u5728\u4f7f\u7528 360 \u8f6f\u4ef6\u4ea7\u54c1\uff0c\u4e3a\u4fdd\u8bc1\u60a8\u7684\u79c1\u4eba\u4fe1\u606f\u5b89\u5168\uff0c\u8bf7\u7acb\u5373\u66f4\u6362\u3002\u672c\u7f51\u9875\u4e0d\u652f\u6301360\u6d4f\u89c8\u5668\uff01");document.location="http://www.baidu.com"}function warn(){confirm("\u60a8\u6b63\u5728\u4f7f\u7528\u7684\u6d4f\u89c8\u5668\u662f Internet Explorer \u5c71\u5be8\u7248\uff0c\u8bf7\u7acb\u5373\u66f4\u6362\u3002\n\u662f\u5426\u9700\u8981\u5e2e\u52a9\u6216\u5efa\u8bae\uff1f")&&(document.location="http://xliar.com/warn.html")}function pass(){};
+checkBrowser(deny, warn, pass);
 			$.init();
 		</script>
 	</body>
