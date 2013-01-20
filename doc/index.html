@@ -1613,7 +1613,7 @@
 						if(p in el.style){
 							if(toRet){
 								//firefox只支持transitionend，end中e不能大写
-								if(isFirefox() > -1) toRet=toRet.replace('-','');
+								if(isFirefox()) toRet=toRet.replace('-','');
 								p = toCamelCase(vendors[i] + toRet);
 							}
 							//console.log(p + (p in el.style));
